@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=IRC
+Exec=konsole -p IRC -e ~/.local/bin/irc
+Type=Application
+Icon=face-smile
+Categories=Network;
