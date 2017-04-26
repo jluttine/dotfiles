@@ -1,6 +1,8 @@
 [Desktop Entry]
 Name=IRC
-Exec=konsole -p IRC -e ~/.local/bin/irc
+Terminal=true;
+TerminalOptions="-p IRC"
+Exec="irc"
 Type=Application
 Icon=face-smile
 Categories=Network;
