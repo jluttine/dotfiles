@@ -12,15 +12,17 @@ source $HOME/.bash_aliases
 export VISUAL=vim
 export EDITOR=vim
 
-export PATH=$PATH:/usr/local/bin:$HOME/.local/bin
+#export PATH=$PATH:/usr/local/bin:$HOME/.local/bin
 
 # NVM
-if [ -s ~/.nvm/nvm.sh ]; then
-        NVM_DIR=~/.nvm
-        source ~/.nvm/nvm.sh
-fi
+#if [ -s ~/.nvm/nvm.sh ]; then
+#        NVM_DIR=~/.nvm
+#        source ~/.nvm/nvm.sh
+#fi
 
 # Virtualenvwrapper
-export WORKON_HOME=~/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
+#export WORKON_HOME=~/.virtualenvs
+#source /usr/bin/virtualenvwrapper.sh
 
+# GPG agent settings
+#export GPG_TTY=$(tty)
