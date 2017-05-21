@@ -2,11 +2,9 @@
 
 let
 
-  scriptName = "miniconda-install.sh";
+  installationPath = "~/.conda";
 
-  installationPath = "$HOME/.miniconda";
-
-  miniconda = pkgs.stdenv.mkDerivation rec {
+  minicondaScript = pkgs.stdenv.mkDerivation rec {
     name = "miniconda-${version}";
     version = "4.3.11";
     src = pkgs.fetchurl {
@@ -16,39 +14,31 @@ let
     # Nothing to unpack.
     unpackPhase = "true";
     # Rename the file so it's easier to use. The file needs to have .sh ending
-    # because the installation script does some checks based on that
-    # assumption. However, don't add it under $out/bin/ becase we don't really
-    # want to use it within our environment.
+    # because the installation script does some checks based on that assumption.
+    # However, don't add it under $out/bin/ becase we don't really want to use
+    # it within our environment. It is called by "conda-install" defined below.
     installPhase = ''
       mkdir -p $out
-      cp $src $out/${scriptName}
+      cp $src $out/miniconda.sh
     '';
-    # Add executable mode here so that no patching will be done by nix.
+    # Add executable mode here after fixup phase so that no patching will be
+    # done by nix because we want to use this miniconda installer in the FHS
+    # user env.
     fixupPhase = ''
-      chmod +x $out/${scriptName}
+      chmod +x $out/miniconda.sh
     '';
   };
 
-#  nbstripout = pkgs.python35Packages.buildPythonPackage rec {
-#    name = "${pname}-${version}";
-#    version = "0.3.0";
-#    pname = "nbstripout";
-#    src = pkgs.python35Packages.fetchPypi {
-#      inherit pname version;
-#      sha256 = "126xhjma4a0k7gq58hbqglhb3rai0a576azz7g8gmqjr3kl0264v";
-#    };
-#  };
-
-#  conda-installer = pkgs.runCommand "conda-install-script"
-#    { buildInputs = [ pkgs.makeWrapper conda-installer-package ]; }
-#    ''
-#      mkdir -p $out/bin
-#      makeWrapper                                   \
-#        ${conda-installer-package}/conda-install.sh \
-#        $out/bin/conda-install                      \
-#        --add-flags "-p ${conda-path}"              \
-#        --add-flags "-b"
-#    '';
+  conda = pkgs.runCommand "conda-install"
+    { buildInputs = [ pkgs.makeWrapper minicondaScript ]; }
+    ''
+      mkdir -p $out/bin
+      makeWrapper                                   \
+        ${minicondaScript}/miniconda.sh \
+        $out/bin/conda-install                      \
+        --add-flags "-p ${installationPath}"              \
+        --add-flags "-b"
+    '';
 
 in
 (
@@ -57,24 +47,23 @@ in
     targetPkgs = pkgs: (
       with pkgs; [
 
-        miniconda
+        conda
 
         # Required at least to get libGL for matplotlib PyQt5
         #mesa
 
-	# Missing libraries for IPython. Find these using: `LD_DEBUG=libs
-	# ipython`
+        # Missing libraries for IPython. Find these using: `LD_DEBUG=libs
+        # ipython`
         xorg.libSM
         xorg.libICE
         xorg.libXrender
 
-	# Just in case one installs a package with pip instead of conda and pip
-	# needs to compile some C sources
+        # Just in case one installs a package with pip instead of conda and pip
+        # needs to compile some C sources
         gcc
 
-	# These are just my own personal requirements. If Emacs could
-	# seamlessly activate nix-shells per project, these would be mostly
-	# unnecessary.
+        # These are just my own personal requirements. If Emacs could seamlessly
+        # activate nix-shells per project, these would be mostly unnecessary.
         emacs
         xclip
 
@@ -86,27 +75,14 @@ in
         git
         gitAndTools.gitflow
         nbstripout
-        getopt
-        python35Packages.ipython
+        #getopt
+        #python35Packages.ipython
 
       ]
     );
     profile = ''
-      if [ ! -d "${installationPath}" ]; then
-        # CAUTION: setting LD_LIBRARY_PATH (on Linux) or DYLD_LIBRARY_PATH (on Mac OS X) can interfere with this because the dynamic linker short-circuits link resolution by first looking at LD_LIBRARY_PATH.
-        #export _LD_LIBRARY_PATH=$LD_LIBRARY_PATH
-        #unset LD_LIBRARY_PATH
-        ${miniconda}/${scriptName} -b -p ${installationPath}
-        #export LD_LIBRARY_PATH=$_LD_LIBRARY_PATH
-        #unset _LD_LIBRARY_PATH
-      fi
       # Add conda to PATH
       export PATH=${installationPath}/bin:$PATH
-      # Paths for finding relevant libraries
-      #export LD_LIBRARY_PATH="${installationPath}/lib:$LD_LIBRARY_PATH"
-      #export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${installationPath}/lib"
-      # Fonts
-      #export FONTCONFIG_FILE=/etc/fonts/fonts.conf
       # Paths for gcc if compiling some C sources with pip
       export NIX_CFLAGS_COMPILE="-I${installationPath}/include"
       export NIX_CFLAGS_LINK="-L${installationPath}lib"
