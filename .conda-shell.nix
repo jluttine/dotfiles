@@ -21,7 +21,7 @@ let
       mkdir -p $out
       cp $src $out/miniconda.sh
     '';
-    # Add executable mode here after fixup phase so that no patching will be
+    # Add executable mode here after the fixup phase so that no patching will be
     # done by nix because we want to use this miniconda installer in the FHS
     # user env.
     fixupPhase = ''
@@ -29,6 +29,8 @@ let
     '';
   };
 
+  # Wrap miniconda installer so that it is non-interactive and installs into the
+  # path specified by installationPath
   conda = pkgs.runCommand "conda-install"
     { buildInputs = [ pkgs.makeWrapper minicondaScript ]; }
     ''
@@ -53,7 +55,7 @@ in
         #mesa
 
         # Missing libraries for IPython. Find these using: `LD_DEBUG=libs
-        # ipython`
+        # ipython --pylab`
         xorg.libSM
         xorg.libICE
         xorg.libXrender
