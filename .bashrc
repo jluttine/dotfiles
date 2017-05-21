@@ -12,6 +12,10 @@ source $HOME/.bash_aliases
 export VISUAL=vim
 export EDITOR=vim
 
+function conda-shell {
+    nix-shell ~/.conda-shell.nix
+}
+
 #export PATH=$PATH:/usr/local/bin:$HOME/.local/bin
 
 # NVM
