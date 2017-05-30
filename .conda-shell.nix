@@ -2,7 +2,8 @@
 
 let
 
-  installationPath = "~/.conda";
+  installationPath = "~/.miniconda";
+  #installationPath = "~/.conda";
 
   minicondaScript = pkgs.stdenv.mkDerivation rec {
     name = "miniconda-${version}";
@@ -60,6 +61,9 @@ in
         xorg.libICE
         xorg.libXrender
 
+        # For Spyder
+        libselinux
+
         # Just in case one installs a package with pip instead of conda and pip
         # needs to compile some C sources
         gcc
@@ -88,6 +92,11 @@ in
       # Paths for gcc if compiling some C sources with pip
       export NIX_CFLAGS_COMPILE="-I${installationPath}/include"
       export NIX_CFLAGS_LINK="-L${installationPath}lib"
+
+      # Fonts (at least Spyder requires?)
+      export FONTCONFIG_FILE=/etc/fonts/fonts.conf
+      export QTCOMPOSE=${pkgs.xorg.libX11}/share/X11/locale
+
 
       # This is just my personal setting for using GPG agent within the environment too
       export GPG_AGENT_INFO=$XDG_RUNTIME_DIR/gnupg/S.gpg-agent:0:1
