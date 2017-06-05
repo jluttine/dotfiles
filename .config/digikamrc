@@ -1,5 +1,5 @@
 [AdvancedRename Input]
-Pattern History List=\\0
+Pattern History List=,[date]
 
 [AdvancedRename Widget]
 Options are expanded=true
@@ -79,11 +79,11 @@ TreeView Font=Noto Sans,10,-1,0,50,0,0,0,0,0
 
 [AlbumFolderView Sidebar]
 CurrentIndex=9
-Expansion=0,1,8,2,5,6,7,3,4,16,9,-2
+Expansion=0,1,17,9,16,4,3,7,6,5,2,8,-2
 RestoreChecked=false
 Selection=9
 SortColumn=0
-SortOrder=0
+SortOrder=1
 
 [AlbumIconViewFilterSearchTextBar Search Text Tool]
 CaseSensitive=0
@@ -132,7 +132,7 @@ FullScreen Hide SideBars=false
 FullScreen Hide ThumbBar=true
 FullScreen Hide ToolBars=false
 Height 1080=1052
-LastTargetAlbum=16
+LastTargetAlbum=17
 LossLessFormat=0
 Manual Rename String=
 MenuBar=Disabled
@@ -773,9 +773,9 @@ tagPaths=1
 [Database Settings]
 Database Connectoptions=
 Database Hostname=
-Database Name=/home/jluttine/Pictures/
-Database Name Face=/home/jluttine/Pictures/
-Database Name Thumbnails=/home/jluttine/Pictures/
+Database Name=/home/jluttine/.digikamdb/
+Database Name Face=/home/jluttine/.digikamdb/
+Database Name Thumbnails=/home/jluttine/.digikamdb/
 Database Password=
 Database Port=-1
 Database Type=QSQLITE
@@ -798,7 +798,7 @@ Minimized=false
 RestoreSize=-1
 
 [Digikam Right Sidebar]
-ActiveTab=4
+ActiveTab=6
 DigikamProperties Expanded=true
 FileProperties Expanded=true
 ItemProperties Expanded=true
@@ -886,8 +886,8 @@ CaseSensitive=0
 CaseSensitive=0
 
 [DigikamViewTagFilterView]
-CurrentIndex=
-Expansion=
+CurrentIndex=6
+Expansion=6,7,9
 RestoreChecked=false
 Selection=
 SortColumn=0
@@ -1012,7 +1012,7 @@ Scroll Current Item To Center=true
 Show Permanent Delete Dialog=true
 Show Splash=true
 Show Trash Delete Dialog=false
-State=AAAA/wAAAAD9AAAAAAAAB4AAAAPVAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAABAgAAAHHAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
 String Comparison Type=0
 ToolBarsMovable=Disabled
 Use Large Thumbs=true
@@ -1207,7 +1207,7 @@ Width 1920=560
 [Import Filters]
 Filter0=All Files|false|||
 Filter1=Only New Files|true|||
-Filter2=Raw Files|false|||image/x-nikon-nef;image/x-fuji-raf;image/x-adobe-dng;image/x-panasonic-raw;image/x-olympus-orf;image/x-kodak-dcr;image/x-kodak-k25;image/x-sony-arw;image/x-minolta-mrw;image/x-kodak-kdc;image/x-sigma-x3f;image/x-sony-srf;image/x-pentax-pef;image/x-panasonic-raw2;image/x-canon-crw;image/x-sony-sr2;image/x-canon-cr2
+Filter2=Only New Raw Files|true|||image/x-nikon-nef;image/x-fuji-raf;image/x-adobe-dng;image/x-panasonic-raw;image/x-olympus-orf;image/x-kodak-dcr;image/x-kodak-k25;image/x-sony-arw;image/x-minolta-mrw;image/x-kodak-kdc;image/x-sigma-x3f;image/x-sony-srf;image/x-pentax-pef;image/x-panasonic-raw2;image/x-canon-crw;image/x-sony-sr2;image/x-canon-cr2
 Filter3=JPG/TIFF Files|false|||image/jpeg;image/tiff
 Filter4=Video Files|false|||video/quicktime;video/mp4;video/x-msvideo;video/mpeg
 IgnoreExtensions=dsp dps
@@ -1434,13 +1434,13 @@ Width 1920=1566
 
 [MainWindow]
 InitialAlbumID=9
-SplitterState=AAAA/wAAAAEAAAADAAABDgAABh4AAAEqAf////8AAAAAAQE=
-ThumbbarState=AAAA/wAAAAD9AAAAAQAAAAIAAAUMAAAAwPwBAAAAAfsAAAAmAG0AYQBpAG4AdwBpAG4AZABvAHcAXwB0AGgAdQBtAGIAYgBhAHIAAAAAAAAABQwAAABXAP///wAABQwAAAPVAAAABAAAAAQAAAAIAAAACPwAAAAA
+SplitterState=AAAA/wAAAAEAAAADAAABHQAABecAAAFhAf////8AAAAAAQE=
+ThumbbarState=AAAA/wAAAAD9AAAAAQAAAAIAAAGUAAAAwPwBAAAAAfsAAAAmAG0AYQBpAG4AdwBpAG4AZABvAHcAXwB0AGgAdQBtAGIAYgBhAHIAAAAAAAAAAZQAAABXAP///wAAAZQAAAPVAAAABAAAAAQAAAAIAAAACPwAAAAA
 
 [Metadata Settings]
 EXIF Rotate=true
 EXIF Set Orientation=true
-Metadata Writing Mode=1
+Metadata Writing Mode=0
 Rescan File If Modified=true
 Rotate By Internal Flag=true
 Rotate By Metadata Flag=true
@@ -1456,7 +1456,7 @@ Save Tags=true
 Save Template=true
 Update File Timestamp=true
 Use Lazy Synchronization=false
-Use XMP Sidecar For Reading=true
+Use XMP Sidecar For Reading=false
 Write RAW Files=false
 
 [MetadataSelectorView Search Text Tool]
@@ -1485,11 +1485,10 @@ SortOrder=0
 CaseSensitive=0
 
 [Setup Dialog]
-Height 1080=1023
+Height 1080=668
 Setup Page=4
 Template Tab=0
-Width 1920=1920
-Window-Maximized 1080x1920=true
+Width 1920=1276
 
 [TagEditDlgTitleEdit Search Text Tool]
 CaseSensitive=0
@@ -1514,16 +1513,16 @@ SortOrder=0
 TagsSource=false
 
 [Tags Manager]
-CurrentIndex=44
-Expansion=0,9,51,54,13,14,43,15
+CurrentIndex=0
+Expansion=0,9,13,14,15
 RestoreChecked=false
-Selection=44
+Selection=0
 SortColumn=0
 SortOrder=0
 
 [TimeLine Sidebar]
 CurrentIndex=
-Cursor Position=2016,12,1,0,0,0
+Cursor Position=2017,5,1,0,0,0
 Expansion=
 Histogram Scale=0
 Histogram TimeUnit=2
@@ -1555,7 +1554,7 @@ EffectType=0
 Histogram Channel=0
 Histogram Scale=1
 IterationAdjustment=2
-LevelAdjustment=20
+LevelAdjustment=100
 Lut3D Color Correction Filter=/nix/store/zapcp8ccszb26xg4yii6qbi3d8a84y8a-digikam-5.4.0/share/digikam/data/lut3d/bleach.png
 Lut3D Color Correction Intensity=100
 
