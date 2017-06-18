@@ -1,0 +1,19 @@
+[user]
+	name = Jaakko Luttinen
+	email = jaakko.luttinen@iki.fi
+	signingKey = jaakko.luttinen@iki.fi
+[push]
+	default = matching
+[color]
+	status = auto
+	branch = auto
+[core]
+	editor = vim
+[merge]
+	tool = kdiff3
+	conflictstyle = diff3
+[mergetool "kdiff3"]
+	cmd = kdiff3 $BASE $LOCAL $REMOTE -o $MERGED
+	trustExitCode = False
+[status]
+	showUntrackedFiles = all
