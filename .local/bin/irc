@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
 #ssh -t kapsi.fi screen -d -r -U irc
-ssh -t nipsu screen -d -r -U irc
+ssh -t nipsu tmux attach -t irc
+#ssh -t nipsu screen -d -r -U irc
