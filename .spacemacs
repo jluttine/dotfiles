@@ -3,9 +3,8 @@
 ;; It must be stored in your home directory.
 
 (defun dotspacemacs/layers ()
-  "Configuration Layers declaration.
-You should not put any user code in this function besides modifying the variable
-values."
+  "Layer configuration:
+This function should only modify configuration layer settings."
   (setq-default
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
@@ -39,7 +38,6 @@ values."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
-
      ;; auto-completion
      ;; better-defaults
      extra-langs
@@ -122,11 +120,10 @@ values."
    dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
-  "Initialization function.
-This function is called at the very startup of Spacemacs initialization
-before layers configuration.
-You should not put any user code in there besides modifying the variable
-values."
+  "Initialization:
+This function is called at the very beginning of Spacemacs startup,
+before layer configuration.
+It should only modify the values of Spacemacs settings."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
   (setq-default
@@ -379,36 +376,30 @@ values."
    ))
 
 (defun dotspacemacs/user-init ()
-  "Initialization function for user code.
-It is called immediately after `dotspacemacs/init', before layer configuration
-executes.
- This function is mostly useful for variables that need to be set
-before packages are loaded. If you are unsure, you should try in setting them in
-`dotspacemacs/user-config' first."
-  ; See the following issues:
-  ; https://github.com/syl20bnr/spacemacs/issues/2294#issuecomment-186171621
-  ; https://github.com/syl20bnr/spacemacs/pull/5024#issuecomment-183136832
-  (setq-default exec-path-from-shell-variables '("GOPATH" "RUST"))
+  "Initialization for user code:
+This function is called immediately after `dotspacemacs/init', before layer
+configuration.
+It is mostly for variables that should be set before packages are loaded.
+If you are unsure, try setting them in `dotspacemacs/user-config' first."
   )
 
 (defun dotspacemacs/user-config ()
-  "Configuration function for user code.
-This function is called at the very end of Spacemacs initialization after
-layers configuration.
-This is the place where most of your configurations should be done. Unless it is
-explicitly specified that a variable should be set before a package is loaded,
-you should place your code here."
+  "Configuration for user code:
+This function is called at the very end of Spacemacs startup, after layer
+configuration.
+Put your configuration code here, except for variables that should be set
+before packages are loaded."
   (xclip-mode 1)
   (turn-on-xclip)
   ;;(add-hook 'text-mode-hook 'auto-fill-mode)
   (add-hook 'dired-mode-hook 'deer)
-  ;(smartparens-global-mode -1)
-  ;(setq-default smartparens-mode-set-explicitly 0)
-  ;(turn-off-smartparens-mode)
-  ;(smartparens-global-mode)
+                                        ;(smartparens-global-mode -1)
+                                        ;(setq-default smartparens-mode-set-explicitly 0)
+                                        ;(turn-off-smartparens-mode)
+                                        ;(smartparens-global-mode)
   (remove-hook 'prog-mode-hook #'smartparens-mode)
   (spacemacs/toggle-smartparens-globally-off)
-)
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -449,7 +440,7 @@ This function is called at the very end of Spacemacs initialization."
  '(magit-gitflow-release-finish-arguments (quote ("--fetch" "--push")))
  '(package-selected-packages
    (quote
-    (websocket deferred ghc dash realgud loc-changes load-relative password-generator evil-lion editorconfig dante company-lua auctex alert xclip symon string-inflection company winum evil diminish nix-mode helm-nixos-options company-nixos-options nixos-options zenburn-theme solarized-theme monokai-theme imenu-list pug-mode async anaconda-mode magit-popup yasnippet f package-build skewer-mode simple-httpd py-yapf bracketed-paste packed spray smooth-scrolling shm page-break-lines org-repo-todo leuven-theme evil-org evil-indent-textobject buffer-move auto-dictionary evil-leader js2-mode haskell-mode undo-tree flycheck markdown-mode s iedit org-plus-contrib neotree help-fns+ helm-themes helm-pydoc helm-ag haskell-snippets evil-unimpaired ace-jump-helm-line smartparens helm projectile magit git-commit yapfify yaml-mode xterm-color ws-butler wolfram-mode with-editor window-purpose window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org thrift test-simple tagedit stan-mode spacemacs-theme spaceline smeargle slim-mode shell-pop scss-mode scad-mode sass-mode restart-emacs ranger rainbow-mode rainbow-identifiers rainbow-delimiters quelpa qml-mode pyvenv pytest pyenv-mode py-isort popwin pip-requirements persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file multi-term move-text mmm-mode matlab-mode markdown-toc magit-gitflow macrostep lua-mode lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode julia-mode json-mode js2-refactor js-doc jade-mode intero info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-swoop helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-css-scss helm-core helm-company helm-c-yasnippet google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav ein dumb-jump disaster define-word cython-mode csv-mode company-web company-tern company-statistics company-quickhelp company-ghci company-ghc company-cabal company-c-headers company-auctex company-anaconda column-enforce-mode color-identifiers-mode coffee-mode cmm-mode cmake-mode clean-aindent-mode clang-format auto-yasnippet auto-highlight-symbol auto-compile auctex-latexmk arduino-mode aggressive-indent adaptive-wrap ace-window ace-link ac-ispell)))
+    (org-brain powerline spinner log4e gntp json-snatcher json-reformat multiple-cursors impatient-mode hydra parent-mode hide-comnt helm-purpose haml-mode gitignore-mode fuzzy flx anzu goto-chg highlight request pkg-info epl web-completion-data dash-functional tern pos-tip bind-map bind-key pythonic avy auto-complete popup websocket deferred ghc dash realgud loc-changes load-relative password-generator evil-lion editorconfig dante company-lua auctex alert xclip symon string-inflection company winum evil diminish nix-mode helm-nixos-options company-nixos-options nixos-options zenburn-theme solarized-theme monokai-theme imenu-list pug-mode async anaconda-mode magit-popup yasnippet f package-build skewer-mode simple-httpd py-yapf bracketed-paste packed spray smooth-scrolling shm page-break-lines org-repo-todo leuven-theme evil-org evil-indent-textobject buffer-move auto-dictionary evil-leader js2-mode haskell-mode undo-tree flycheck markdown-mode s iedit org-plus-contrib neotree help-fns+ helm-themes helm-pydoc helm-ag haskell-snippets evil-unimpaired ace-jump-helm-line smartparens helm projectile magit git-commit yapfify yaml-mode xterm-color ws-butler wolfram-mode with-editor window-purpose window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org thrift test-simple tagedit stan-mode spacemacs-theme spaceline smeargle slim-mode shell-pop scss-mode scad-mode sass-mode restart-emacs ranger rainbow-mode rainbow-identifiers rainbow-delimiters quelpa qml-mode pyvenv pytest pyenv-mode py-isort popwin pip-requirements persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file multi-term move-text mmm-mode matlab-mode markdown-toc magit-gitflow macrostep lua-mode lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode julia-mode json-mode js2-refactor js-doc jade-mode intero info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-swoop helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-css-scss helm-core helm-company helm-c-yasnippet google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav ein dumb-jump disaster define-word cython-mode csv-mode company-web company-tern company-statistics company-quickhelp company-ghci company-ghc company-cabal company-c-headers company-auctex company-anaconda column-enforce-mode color-identifiers-mode coffee-mode cmm-mode cmake-mode clean-aindent-mode clang-format auto-yasnippet auto-highlight-symbol auto-compile auctex-latexmk arduino-mode aggressive-indent adaptive-wrap ace-window ace-link ac-ispell)))
  '(paradox-github-token t)
  '(safe-local-variable-values (quote ((python-test-runner . nose)))))
 (custom-set-faces
