@@ -8,8 +8,6 @@
 # Aliases
 source $HOME/.bash_aliases
 
-export TERM="xterm-256color"
-
 # Use VIM for editing
 export VISUAL=vim
 export EDITOR=vim
