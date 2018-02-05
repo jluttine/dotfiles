@@ -80,9 +80,17 @@ in
 
         git
         gitAndTools.gitflow
-        nbstripout
+        #nbstripout
+        (nbstripout.overrideAttrs (oldAttrs: rec { doCheck = false; }))
         #getopt
         #python35Packages.ipython
+
+        # PDF exports in Jupyter notebooks
+        texlive.combined.scheme-full
+        inkscape
+        
+        # Library for Jupyter notebook extensions
+        icu58
 
       ]
     );
