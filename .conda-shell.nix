@@ -52,14 +52,19 @@ in
 
         conda
 
-        # Required at least to get libGL for matplotlib PyQt5
-        #mesa
+        # These are related to matplotlib PyQt5. Fix the following error:
+	# This application failed to start because it could not find or load
+	# the Qt platform plugin "xcb" in "".
+	xlibs.libX11
+	xlibs.libXi
 
-        # Missing libraries for IPython. Find these using: `LD_DEBUG=libs
-        # ipython --pylab`
+        # Missing libraries for IPython. Find these using:
+        # LD_DEBUG=libs ipython --pylab
         xorg.libSM
         xorg.libICE
         xorg.libXrender
+        xorg.libxcb
+        libGL
 
         # For Spyder
         libselinux
@@ -80,10 +85,7 @@ in
 
         git
         gitAndTools.gitflow
-        #nbstripout
-        (nbstripout.overrideAttrs (oldAttrs: rec { doCheck = false; }))
-        #getopt
-        #python35Packages.ipython
+        nbstripout
 
         # PDF exports in Jupyter notebooks
         texlive.combined.scheme-full
@@ -105,6 +107,8 @@ in
       export FONTCONFIG_FILE=/etc/fonts/fonts.conf
       export QTCOMPOSE=${pkgs.xorg.libX11}/share/X11/locale
 
+      # Fix error "Qt: Failed to create XKB context!"
+      export QT_XKB_CONFIG_ROOT="${pkgs.xkeyboard_config}/share/X11/xkb"
 
       # This is just my personal setting for using GPG agent within the environment too
       export GPG_AGENT_INFO=$XDG_RUNTIME_DIR/gnupg/S.gpg-agent:0:1
