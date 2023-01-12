@@ -1,16 +1,30 @@
-{ pkgs ? import <nixpkgs> {} }:
-
 let
 
-  installationPath = "~/.miniconda";
-  #installationPath = "~/.conda";
+  #pinnedPkgs = import (
+  #  builtins.fetchTarball {
+  #    # Descriptive name to make the store path easier to identify
+  #    name = "nixos-unstable-2019-02-11";
+  #    # Commit hash for nixos-unstable as of 2019-02-11
+  #    url = https://github.com/nixos/nixpkgs/archive/36f316007494c388df1fec434c1e658542e3c3cc.tar.gz;
+  #    # Hash obtained using `nix-prefetch-url --unpack <url>`
+  #    sha256 = "1w1dg9ankgi59r2mh0jilccz5c4gv30a6q1k6kv2sn8vfjazwp9k";
+  #  }
+  #) {};
+
+  hostPkgs = import <nixpkgs> {};
+
+  #pkgs = pinnedPkgs;
+  pkgs = hostPkgs;
+
+  #installationPath = "~/.miniconda";
+  installationPath = "~/.conda";
 
   minicondaScript = pkgs.stdenv.mkDerivation rec {
     name = "miniconda-${version}";
-    version = "4.3.11";
+    version = "4.12.0";
     src = pkgs.fetchurl {
-      url = "https://repo.continuum.io/miniconda/Miniconda3-${version}-Linux-x86_64.sh";
-      sha256 = "1f2g8x1nh8xwcdh09xcra8vd15xqb5crjmpvmc2xza3ggg771zmr";
+      url = "https://repo.continuum.io/miniconda/Miniconda3-py39_${version}-Linux-x86_64.sh";
+      sha256 = "sha256-ePOfm66XHsGueWnwUWAX8kE/F3lmcPcEByXdg/z/Vok=";
     };
     # Nothing to unpack.
     unpackPhase = "true";
@@ -32,15 +46,20 @@ let
 
   # Wrap miniconda installer so that it is non-interactive and installs into the
   # path specified by installationPath
-  conda = pkgs.runCommand "conda-install"
+  myconda = let
+    libPath = with pkgs; lib.makeLibraryPath [
+      zlib # libz.so.1
+    ];
+  in pkgs.runCommand "conda-install"
     { buildInputs = [ pkgs.makeWrapper minicondaScript ]; }
     ''
       mkdir -p $out/bin
-      makeWrapper                                   \
-        ${minicondaScript}/miniconda.sh \
-        $out/bin/conda-install                      \
-        --add-flags "-p ${installationPath}"              \
-        --add-flags "-b"
+      makeWrapper                             \
+        ${minicondaScript}/miniconda.sh       \
+        $out/bin/conda-install                \
+        --add-flags "-p ${installationPath}"  \
+        --add-flags "-b"                      \
+        --prefix "LD_LIBRARY_PATH" : "${libPath}"
     '';
 
 in
@@ -50,13 +69,14 @@ in
     targetPkgs = pkgs: (
       with pkgs; [
 
-        conda
+        myconda
+        zlib
 
         # These are related to matplotlib PyQt5. Fix the following error:
 	# This application failed to start because it could not find or load
 	# the Qt platform plugin "xcb" in "".
-	xlibs.libX11
-	xlibs.libXi
+	xorg.libX11
+	xorg.libXi
 
         # Missing libraries for IPython. Find these using:
         # LD_DEBUG=libs ipython --pylab
@@ -67,7 +87,7 @@ in
         libGL
 
         # For Spyder
-        libselinux
+        #libselinux
 
         # Just in case one installs a package with pip instead of conda and pip
         # needs to compile some C sources
@@ -82,17 +102,27 @@ in
 
         gnumake
         gnupg1orig
+        ksshaskpass
+
+        # importmagic.el requires this importmagic but install it via conda
+        # (python.withPackages (
+        #   ps: with ps; [
+        #     importmagic
+        #   ]
+        # ))
 
         git
         gitAndTools.gitflow
-        nbstripout
+        #nbstripout
 
         # PDF exports in Jupyter notebooks
-        texlive.combined.scheme-full
-        inkscape
-        
+        #texlive.combined.scheme-full
+        #inkscape
+        #pdf2svg
+
         # Library for Jupyter notebook extensions
         icu58
+        glibcLocales
 
       ]
     );

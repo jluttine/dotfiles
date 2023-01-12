@@ -9,7 +9,7 @@ alias df='df -h'
 
 alias rm='rm -I'
 
-alias emacs='emacs -nw'
+#alias emacs='emacs -nw'
 
 alias install='sudo aptitude install'
 alias search='aptitude search'

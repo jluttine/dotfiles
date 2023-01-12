@@ -2,8 +2,13 @@
 	name = Jaakko Luttinen
 	email = jaakko.luttinen@iki.fi
 	signingKey = jaakko.luttinen@iki.fi
+[commit]
+	gpgsign = true
+[tag]
+	sign = true
 [push]
 	default = matching
+	followTags = true
 [color]
 	status = auto
 	branch = auto
@@ -17,3 +22,13 @@
 	trustExitCode = False
 [status]
 	showUntrackedFiles = all
+[github]
+	user = jluttine
+[gpg]
+	program = gpg2
+[credential]
+	helper = /run/current-system/sw/bin/git-credential-libsecret
+[pull]
+	rebase = true
+[safe]
+	directory = /etc/nixpkgs

@@ -1,7 +1,6 @@
 [Desktop Entry]
 Name=IRC
-Terminal=true;
-TerminalOptions="-p IRC"
+Terminal=true
 Exec="irc"
 Type=Application
 Icon=face-smile
