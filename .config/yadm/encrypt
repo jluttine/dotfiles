@@ -2,3 +2,4 @@
 .weechat##Linux.nipsu/weechat.conf
 .weechat##Linux.nipsu/irc.conf
 .weechat##Linux.nipsu/plugins.conf
+.ssh/config
