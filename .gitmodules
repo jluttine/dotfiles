@@ -1,3 +1,6 @@
 [submodule ".nide"]
 	path = .nide
 	url = git@github.com:jluttine/NiDE.git
+[submodule "/home/jluttine/.emacs.d"]
+	path = /home/jluttine/.emacs.d
+	url = https://github.com/doomemacs/doomemacs
