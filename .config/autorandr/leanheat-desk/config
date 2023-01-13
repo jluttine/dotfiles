@@ -1,0 +1,9 @@
+output VGA-1
+off
+output eDP-1
+off
+output HDMI-1
+crtc 1
+mode 2560x1440
+pos 0x0
+rate 59.95
