@@ -1,0 +1,3 @@
+[submodule ".nide"]
+	path = .nide
+	url = git@github.com:jluttine/NiDE.git
