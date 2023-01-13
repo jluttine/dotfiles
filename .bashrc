@@ -1,10 +1,3 @@
-
-# added by Miniconda3 3.19.0 installer
-# export PATH="/home/jluttine/Workspace/miniconda3/bin:$PATH"
-
-# added by travis gem
-[ -f /home/jluttine/.travis/travis.sh ] && source /home/jluttine/.travis/travis.sh
-
 # Aliases
 source $HOME/.bash_aliases
 
@@ -12,23 +5,11 @@ source $HOME/.bash_aliases
 export VISUAL=vim
 export EDITOR=vim
 
+# Add Doom Emacs binaries to PATH
+export PATH="$HOME/.emacs.d/bin:$PATH"
+
 #function conda-shell {
 #    nix-shell ~/.conda-shell.nix
 #}
-
-#export PATH=$PATH:/usr/local/bin:$HOME/.local/bin
-
-# NVM
-#if [ -s ~/.nvm/nvm.sh ]; then
-#        NVM_DIR=~/.nvm
-#        source ~/.nvm/nvm.sh
-#fi
-
-# Virtualenvwrapper
-#export WORKON_HOME=~/.virtualenvs
-#source /usr/bin/virtualenvwrapper.sh
-
-# GPG agent settings
-#export GPG_TTY=$(tty)
 
 eval "$(direnv hook bash)"
