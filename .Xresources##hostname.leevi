@@ -1,4 +1,4 @@
 # Prefer x*96 where x is a "nice" fractional number:
 # - x=5/4 gives dpi=120
 # - x=4/3 gives dpi=128
-Xft.dpi: 120
+Xft.dpi: 128
