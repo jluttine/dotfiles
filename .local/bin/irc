@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-mosh -- nipsu tmux attach -t irc
+mosh -- nipsu.fi tmux attach -t irc
 #ssh -t nipsu tmux attach -t irc
