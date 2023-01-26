@@ -41,6 +41,9 @@
 (setq doom-theme 'doom-solarized-dark-high-contrast)
 ;(setq doom-theme 'doom-one)
 
+;; Quit Emacs without asking for confirmation
+(setq confirm-kill-emacs nil)
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
