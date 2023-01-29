@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Jellyfin Media Player
+Comment=Desktop client for Jellyfin
+Exec=jellyfinmediaplayer --scale-factor 1.33
+Icon=com.github.iwalton3.jellyfin-media-player
+Terminal=false
+Type=Application
+StartupWMClass=jellyfinmediaplayer
+Categories=AudioVideo;Video;Player;TV;
