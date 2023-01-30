@@ -1,6 +1,6 @@
 [submodule ".nide"]
 	path = ".config/yadm/alt/.nide##hostname.leevi"
 	url = git@github.com:jluttine/NiDE.git
-[submodule "/home/jluttine/.emacs.d"]
-	path = /home/jluttine/.emacs.d
-	url = https://github.com/doomemacs/doomemacs
+[submodule ".emacs.d"]
+	path = .emacs.d
+	url = https://github.com/doomemacs/doomemacs.git
