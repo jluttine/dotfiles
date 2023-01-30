@@ -13,3 +13,5 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 #}
 
 eval "$(direnv hook bash)"
+
+export GPG_TTY=$(tty)
