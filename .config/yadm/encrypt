@@ -1,5 +1,1 @@
-.weechat##Linux.nipsu/ssl/relay.pem
-.weechat##Linux.nipsu/weechat.conf
-.weechat##Linux.nipsu/irc.conf
-.weechat##Linux.nipsu/plugins.conf
-.ssh/config
+.config/yadm/alt/.weechat##hostname.nipsu
