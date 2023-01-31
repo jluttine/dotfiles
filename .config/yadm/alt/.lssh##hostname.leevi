@@ -1,0 +1,2 @@
+LHAPPDIR=~/workspace/leanheat/app
+MYSSHKEY=~/.ssh/leanheat-aws-jaakkol.pem
