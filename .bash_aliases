@@ -60,3 +60,5 @@ alias pac-rem-orph="pacman -Qtdq > /dev/null && sudo pacman -Rns \$(pacman -Qtdq
 alias pac-upd='sudo pacman -Sy && sudo abs'         # Update and refresh the local package and ABS databases against repositories
 alias pac-insdep='sudo pacman -S --asdeps'            # Install given package(s) as dependencies
 alias pac-mir='sudo pacman -Syy'                    # Force refresh of all package lists after updating /etc/pacman.d/mirrorlist
+
+alias yadm-nixos='yadm --yadm-dir /etc/nixos/.yadm/config --yadm-data /etc/nixos/.yadm/data'
