@@ -39,7 +39,7 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;(setq doom-theme 'doom-solarized-light)
-(setq doom-theme 'doom-solarized-dark-high-contrast)
+;(setq doom-theme 'doom-solarized-dark-high-contrast)
 ;(setq doom-theme 'doom-one)
 
 ;; Quit Emacs without asking for confirmation
@@ -85,3 +85,37 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; Sort branches by the most recent commit dates
+(after! magit
+  (setq magit-list-refs-sortby "-committerdate"))
+
+;; From here:
+;; https://tecosaur.github.io/emacs-config/config.html#string-inflection
+(use-package! string-inflection
+  :commands (string-inflection-all-cycle
+             string-inflection-toggle
+             string-inflection-camelcase
+             string-inflection-lower-camelcase
+             string-inflection-kebab-case
+             string-inflection-underscore
+             string-inflection-capital-underscore
+             string-inflection-upcase)
+  :init
+  (map! :leader :prefix ("c~" . "naming convention")
+        :desc "cycle" "~" #'string-inflection-all-cycle
+        :desc "toggle" "t" #'string-inflection-toggle
+        :desc "CamelCase" "c" #'string-inflection-camelcase
+        :desc "downCase" "d" #'string-inflection-lower-camelcase
+        :desc "kebab-case" "k" #'string-inflection-kebab-case
+        :desc "under_score" "_" #'string-inflection-underscore
+        :desc "Upper_Score" "u" #'string-inflection-capital-underscore
+        :desc "UP_CASE" "U" #'string-inflection-upcase)
+  (after! evil
+    (evil-define-operator evil-operator-string-inflection (beg end _type)
+      "Define a new evil operator that cycles symbol casing."
+      :move-point nil
+      (interactive "<R>")
+      (string-inflection-all-cycle)
+      (setq evil-repeat-info '([?g ?~])))
+    (define-key evil-normal-state-map (kbd "g~") 'evil-operator-string-inflection)))
