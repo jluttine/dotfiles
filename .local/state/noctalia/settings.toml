@@ -6,14 +6,14 @@ enable_notification_sounds = false
 [bar.default]
 end = [
     "keyboard_layout",
+    "battery",
+    "volume",
     "media",
     "notifications",
     "clipboard",
     "network",
     "bluetooth",
-    "volume",
     "brightness",
-    "battery",
     "control-center",
     "tray",
     "session"
@@ -166,6 +166,9 @@ enabled = false
     [wallpaper.last]
     path = "/nix/store/3qbfjgnm132ffi129bvmi47y505sqj1w-noctalia-5.0.1/share/noctalia/assets/noctalia-wallpaper.png"
 
+[widget.battery]
+display_mode = "graphic"
+
 [widget.brightness]
 enabled = false
 
@@ -177,6 +180,10 @@ enabled = false
 
 [widget.media]
 enabled = false
+
+[widget.volume]
+mute_color = "on_error_container"
+show_label = false
 
 [widget.workspaces]
 hide_when_empty = true
