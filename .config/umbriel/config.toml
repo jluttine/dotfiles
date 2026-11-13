@@ -328,6 +328,8 @@ default_extent_fraction = 0.5
 #
 [appearance.tab_bar]
 style = "titles"         # "indicator" draws thin slots without titles
+corner_radius = 6
+gap = 0
 # height = 24
 # gap = -1                 # space between bar and window; -1 follows layout.gap
 # font = "sans 10"
@@ -388,8 +390,11 @@ border_color_outer = "#00000000"
 match.is_focused = true
 blur = true
 opacity = 1.0
-border_color_outer = "#88C0D0FF"
-#border_color_outer = "#FFFFFFFF"
+ # You need to update this manually when you change the theme.
+ # The color code can be found in:
+ # Settings -> Appearance -> Theme -> Inspect Colors
+ # Ideally, one could set, for instance, "primary"
+border_color_outer = "#7aa2f7"
 
 [[layer_rule]]
 match.namespace = "^noctalia-panel$"
