@@ -16,7 +16,7 @@
 files = []
 
 [include.optional]
-files = []
+files = ["noctalia.toml"]
 
 # ==============================================================================
 # General
@@ -68,7 +68,7 @@ xwayland = false
 [output.eDP-1]
 #mode = "2560x1566@90"
 #position = [0, 0]
-scale = 1.1
+scale = 1.2
 #vrr = "fullscreen"
 #hdr = "auto"
 #sdr_transfer = "gamma22" # Or "srgb" for piecewise SDR decoding in HDR.
@@ -195,10 +195,10 @@ options = "caps:escape"
 
 # Applications and session
 "Mod+Return" = { action = "spawn alacritty", repeat = false }
-"Mod+Space" = "spawn noctalia msg panel-toggle launcher"
+"Mod+Space" = { action = "spawn noctalia msg panel-toggle launcher", repeat = false }
 "Mod+Escape" = { action = "window-close", repeat = false }
-"Ctrl+Alt+L" = "spawn noctalia msg session lock"
-"Ctrl+Alt+Delete" = "spawn noctalia msg panel-toggle session"
+"Ctrl+Alt+L" = { action = "spawn noctalia msg session lock", repeat = false }
+"Ctrl+Alt+Delete" = { action = "spawn noctalia msg panel-toggle session", repeat = false }
 #"Mod+Shift+Escape" = { action = "shortcuts-inhibit-toggle", allow_when_inhibited = true, repeat = false }
 
 # Media, volume and brightness keys from any input device, routed through the
@@ -245,16 +245,16 @@ options = "caps:escape"
 "Mod+Ctrl+Comma" = "window-consume-from-left"
 "Mod+Ctrl+Period" = "window-consume-from-right"
 # Needs layout.mode = "dwindle".
-"Mod+S" = "layout-toggle-split"
+"Mod+S" = { action = "layout-toggle-split", repeat = false }
 "Mod+W" = { action = "column-toggle-tabbed", repeat = false }
 "Mod+Alt+Right" = "column-focus-tab-next"
 "Mod+Alt+Left" = "column-focus-tab-previous"
 "Mod+WheelUp" = "window-focus-left"
 "Mod+WheelDown" = "window-focus-right"
 "Mod+O" = { action = "overview-toggle", repeat = false }
-"Mod+Ctrl+D" = "workspace-set-layout dwindle"
-"Mod+Ctrl+M" = "workspace-set-layout master"
-"Mod+Ctrl+S" = "workspace-set-layout stacking"
+"Mod+Ctrl+D" = { action = "workspace-set-layout dwindle", repeat = false }
+"Mod+Ctrl+M" = { action = "workspace-set-layout master", repeat = false }
+"Mod+Ctrl+S" = { action = "workspace-set-layout stacking", repeat = false }
 
 # Workspaces
 # Move the whole workspace, retaining its name, layout, and windows.
@@ -326,8 +326,8 @@ default_extent_fraction = 0.5
 # new_tab_position = "after_active"
 # middle_click_closes = true
 #
-# [appearance.tab_bar]
-# style = "titles"         # "indicator" draws thin slots without titles
+[appearance.tab_bar]
+style = "titles"         # "indicator" draws thin slots without titles
 # height = 24
 # gap = -1                 # space between bar and window; -1 follows layout.gap
 # font = "sans 10"
@@ -372,6 +372,11 @@ match.title = "^notificationtoasts_.+_desktop"
 default_position = { x = 0, y = 0, anchor = "bottom_right" }
 default_focused = false
 default_pinned = true
+
+[[window_rule]]
+match.title = "^Network Connections$"
+default_floating = true
+#default_floating_size_px = { width = 1020, height = 900 }
 
 [[window_rule]]
 match.is_focused = false

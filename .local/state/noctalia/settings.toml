@@ -8,30 +8,53 @@ end = [
     "keyboard_layout",
     "battery",
     "volume",
+    "network",
+    "bluetooth",
     "media",
     "notifications",
     "clipboard",
-    "network",
-    "bluetooth",
     "brightness",
     "control-center",
     "tray",
     "session"
 ]
-font_scale = 1.0499999839812517
+font_scale = 0.89999998733401299
 margin_ends = 0
+padding = 10
 radius = 0
-scale = 1.0500000081956387
+scale = 1.300000011920929
 shadow = false
-start = [ "launcher", "workspaces" ]
+start = [ "launcher", "workspaces", "active_window" ]
 thickness = 30
-widget_spacing = 9
+widget_spacing = 11
 
 [bluetooth]
 connection_notifications = true
 
 [brightness]
 minimum_brightness = 0.0099999997764825821
+
+[calendar]
+enabled = true
+
+    [calendar.account.jluttine]
+    name = "Gmail"
+    type = "google"
+
+[control_center.calendar]
+show_events_location = true
+show_week_numbers = true
+
+[desktop_widgets]
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
 
 [idle]
 behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
@@ -52,6 +75,12 @@ pre_action_fade_seconds = 10
     enabled = true
     locked_timeout = 30.0
     timeout = 300.0
+
+[keybinds]
+down = [ "Down", "Ctrl+j" ]
+left = [ "Left", "Ctrl+h" ]
+right = [ "Right", "Ctrl+l" ]
+up = [ "Up", "Ctrl+k" ]
 
 [location]
 address = "Tampere, Finland"
@@ -74,11 +103,11 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
     [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
     box_height = 196.0
     box_width = 810.0
-    cx = 1163.5
-    cy = 1189.3720703125
+    cx = 1066.5
+    cy = 1090.39404296875
     output = "eDP-1"
-    placement_height = 1454.0
-    placement_width = 2327.0
+    placement_height = 1333.0
+    placement_width = 2133.0
     rotation = 0.0
     type = "login_box"
 
@@ -101,6 +130,7 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
 
 [nightlight]
 enabled = true
+temperature_night = 3500
 
 [osd.kinds]
 keyboard_layout = false
@@ -108,6 +138,9 @@ keyboard_layout = false
 [shell]
 clipboard_history_max_entries = 10
 launch_apps_as_systemd_services = true
+
+    [shell.launcher]
+    search_position = "top"
 
     [shell.panel]
     session_placement = "floating"
@@ -151,11 +184,13 @@ launch_apps_as_systemd_services = true
     variant = "destructive"
 
 [theme]
-builtin = "Nord"
+builtin = "Tokyo-Night"
 community_palette = "Oxocarbon"
 mode = "dark"
-source = "builtin"
 wallpaper_scheme = "m3-content"
+
+    [theme.templates]
+    builtin_ids = [ "alacritty", "emacs", "umbriel" ]
 
 [wallpaper]
 enabled = false
@@ -165,6 +200,13 @@ enabled = false
 
     [wallpaper.last]
     path = "/nix/store/3qbfjgnm132ffi129bvmi47y505sqj1w-noctalia-5.0.1/share/noctalia/assets/noctalia-wallpaper.png"
+
+[widget.active_window]
+capsule = true
+capsule_padding = 10
+font_scale = 0.90000000000000013
+max_length = 550
+show_empty_label = true
 
 [widget.battery]
 display_mode = "graphic"
@@ -180,6 +222,19 @@ enabled = false
 
 [widget.media]
 enabled = false
+
+[widget.network]
+scale = 1.3
+show_label = false
+vpn_status = "both"
+
+    [widget.network.actions]
+    right = "exec nm-connection-editor"
+
+[widget.tray]
+hidden = [ "nm-applet" ]
+hide_passive = false
+match_adjacent_spacing = true
 
 [widget.volume]
 mute_color = "on_error_container"
