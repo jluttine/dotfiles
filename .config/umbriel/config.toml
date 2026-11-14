@@ -24,7 +24,7 @@ files = ["noctalia.toml"]
 # https://docs.noctalia.dev/umbriel/configuration/#general
 #
 [general]
-# autostart = ["noctalia", "kitty"]
+autostart = ["nm-applet --indicator"]
 xwayland = false
 # Sharp X11 apps and games on scaled outputs; they see physical resolutions.
 # xwayland_native_resolution = true
@@ -394,7 +394,8 @@ opacity = 1.0
  # The color code can be found in:
  # Settings -> Appearance -> Theme -> Inspect Colors
  # Ideally, one could set, for instance, "primary"
-border_color_outer = "#7aa2f7"
+#border_color_outer = "#7aa2f7"  # tokyo night
+border_color_outer = "#e6b450"  # ayu
 
 [[layer_rule]]
 match.namespace = "^noctalia-panel$"

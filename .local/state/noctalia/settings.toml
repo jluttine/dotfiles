@@ -4,17 +4,16 @@ config_version = 16
 enable_notification_sounds = false
 
 [bar.default]
+center = [ "control-center", "clock", "screenshot" ]
 end = [
+    "nightlight",
     "keyboard_layout",
     "battery",
     "volume",
     "network",
     "bluetooth",
-    "media",
     "notifications",
     "clipboard",
-    "brightness",
-    "control-center",
     "tray",
     "session"
 ]
@@ -130,6 +129,7 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
 
 [nightlight]
 enabled = true
+temperature_day = 5500
 temperature_night = 3500
 
 [osd.kinds]
@@ -143,8 +143,18 @@ launch_apps_as_systemd_services = true
     search_position = "top"
 
     [shell.panel]
+    clipboard_placement = "attached"
+    open_near_click_clipboard = true
+    open_near_click_control_center = true
     session_placement = "floating"
     session_position = "center"
+
+    [shell.screenshot]
+    annotate = true
+    confirm_region = true
+    directory = "/home/jluttine/Desktop/Screenshots"
+    remember_last_region = true
+    skip_annotate_on_copy_save = true
 
     [[shell.session.actions]]
     action = "lock"
@@ -184,13 +194,14 @@ launch_apps_as_systemd_services = true
     variant = "destructive"
 
 [theme]
-builtin = "Tokyo-Night"
-community_palette = "Oxocarbon"
+builtin = "Ayu"
+community_palette = "Solarized"
 mode = "dark"
 wallpaper_scheme = "m3-content"
 
     [theme.templates]
-    builtin_ids = [ "alacritty", "emacs", "umbriel" ]
+    builtin_ids = [ "alacritty", "emacs", "gtk3", "gtk4", "qt", "umbriel" ]
+    community_ids = [ "chromium-based", "pywalfox", "neovim", "thunderbird" ]
 
 [wallpaper]
 enabled = false
@@ -215,10 +226,8 @@ display_mode = "graphic"
 enabled = false
 
 [widget.clock]
+anchor = true
 format = "{:%H:%M, %a %b %e}"
-
-[widget.control-center]
-enabled = false
 
 [widget.media]
 enabled = false
@@ -230,6 +239,9 @@ vpn_status = "both"
 
     [widget.network.actions]
     right = "exec nm-connection-editor"
+
+[widget.nightlight.actions]
+left = "nightlight-toggle"
 
 [widget.tray]
 hidden = [ "nm-applet" ]
