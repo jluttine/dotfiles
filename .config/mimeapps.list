@@ -1,0 +1,43 @@
+[Added Associations]
+application/pdf=okular.desktop;
+text/calendar=org.kde.kate.desktop;
+x-scheme-handler/tg=userapp-Telegram Desktop-WIF2Y1.desktop;userapp-Telegram Desktop-X2X411.desktop;org.telegram.desktop.desktop;userapp-Telegram Desktop-ITS0J3.desktop;
+x-scheme-handler/tonsite=org.telegram.desktop.desktop;userapp-Telegram Desktop-MVM1J3.desktop;
+x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/chrome=firefox.desktop;
+text/html=firefox.desktop;
+application/x-extension-htm=firefox.desktop;
+application/x-extension-html=firefox.desktop;
+application/x-extension-shtml=firefox.desktop;
+application/xhtml+xml=firefox.desktop;
+application/x-extension-xhtml=firefox.desktop;
+application/x-extension-xht=firefox.desktop;
+x-scheme-handler/ton=org.telegram.desktop.desktop;
+image/jpeg=swayimg.desktop;
+x-scheme-handler/mailto=userapp-Thunderbird-PC7OY3.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-PC7OY3.desktop;
+message/rfc822=userapp-Thunderbird-PC7OY3.desktop;
+
+[Default Applications]
+application/pdf=okular.desktop;
+x-scheme-handler/sgnl=signal.desktop
+x-scheme-handler/signalcaptcha=signal.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-ITS0J3.desktop
+x-scheme-handler/tonsite=userapp-Telegram Desktop-MVM1J3.desktop
+inode/directory=pcmanfm.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/chrome=firefox.desktop
+text/html=firefox.desktop
+application/x-extension-htm=firefox.desktop
+application/x-extension-html=firefox.desktop
+application/x-extension-shtml=firefox.desktop
+application/xhtml+xml=firefox.desktop
+application/x-extension-xhtml=firefox.desktop
+application/x-extension-xht=firefox.desktop
+x-scheme-handler/ton=org.telegram.desktop.desktop
+image/jpeg=swayimg.desktop
+x-scheme-handler/mailto=userapp-Thunderbird-PC7OY3.desktop
+x-scheme-handler/mid=userapp-Thunderbird-PC7OY3.desktop
+message/rfc822=userapp-Thunderbird-PC7OY3.desktop
