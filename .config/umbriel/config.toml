@@ -26,6 +26,7 @@ files = ["noctalia.toml"]
 [general]
 autostart = ["nm-applet --indicator"]
 xwayland = false
+show_cheatsheet = false
 # Sharp X11 apps and games on scaled outputs; they see physical resolutions.
 # xwayland_native_resolution = true
 # Umbriel announces the X11 interface scale and cursor theme through XSETTINGS.
@@ -68,7 +69,7 @@ xwayland = false
 [output.eDP-1]
 #mode = "2560x1566@90"
 #position = [0, 0]
-scale = 1.2
+scale = 1.3
 #vrr = "fullscreen"
 #hdr = "auto"
 #sdr_transfer = "gamma22" # Or "srgb" for piecewise SDR decoding in HDR.
@@ -195,6 +196,7 @@ options = "caps:escape"
 
 # Applications and session
 "Mod+Return" = { action = "spawn alacritty", repeat = false }
+"Mod+Home" = { action = "spawn pcmanfm", repeat = false }
 "Mod+Space" = { action = "spawn noctalia msg panel-toggle launcher", repeat = false }
 "Mod+Escape" = { action = "window-close", repeat = false }
 "Ctrl+Alt+L" = { action = "spawn noctalia msg session lock", repeat = false }
@@ -236,10 +238,10 @@ options = "caps:escape"
 "Mod+M" = { action = "window-toggle-maximize-to-edges", repeat = false }
 "Mod+F" = { action = "window-toggle-fullscreen", repeat = false }
 "Mod+Ctrl+F" = { action = "window-toggle-maximize", repeat = false }
-"Mod+Ctrl+L" = "window-modify-primary-extent +0.02"
-"Mod+Ctrl+H" = "window-modify-primary-extent -0.02"
-"Mod+Ctrl+K" = "window-modify-secondary-extent +0.02"
-"Mod+Ctrl+J" = "window-modify-secondary-extent -0.02"
+"Mod+Ctrl+L" = "window-modify-primary-extent +0.05"
+"Mod+Ctrl+H" = "window-modify-primary-extent -0.05"
+"Mod+Ctrl+K" = "window-modify-secondary-extent +0.05"
+"Mod+Ctrl+J" = "window-modify-secondary-extent -0.05"
 "Mod+Comma" = "window-consume-left"
 "Mod+Period" = "window-consume-right"
 "Mod+Ctrl+Comma" = "window-consume-from-left"
@@ -281,9 +283,9 @@ options = "caps:escape"
 "Mod+Shift+9" = "window-move-to-workspace 9"
 
 # Scratchpad
-#"Mod+Shift+Space" = { action = "window-move-to-scratchpad", repeat = false }
-#"Mod+Space" = "scratchpad-toggle"
-#"Mod+Ctrl+Space" = { action = "window-restore-from-scratchpad", repeat = false }
+"Mod+Shift+Backspace" = { action = "window-move-to-scratchpad", repeat = false }
+"Mod+Backspace" = { action = "scratchpad-toggle", repeat = false }
+"Mod+Ctrl+Backspace" = { action = "window-restore-from-scratchpad", repeat = false }
 #"Mod+Tab" = "scratchpad-focus-next"
 
 # ==============================================================================

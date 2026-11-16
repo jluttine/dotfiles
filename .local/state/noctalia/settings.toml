@@ -21,10 +21,10 @@ font_scale = 0.89999998733401299
 margin_ends = 0
 padding = 10
 radius = 0
-scale = 1.300000011920929
+scale = 1.2000000104308128
 shadow = false
 start = [ "launcher", "workspaces", "active_window" ]
-thickness = 30
+thickness = 21
 widget_spacing = 11
 
 [bluetooth]
@@ -35,9 +35,11 @@ minimum_brightness = 0.0099999997764825821
 
 [calendar]
 enabled = true
+event_date_format = "%a %e %B"
+refresh_minutes = 5
 
     [calendar.account.jluttine]
-    name = "Gmail"
+    name = "GMail"
     type = "google"
 
 [control_center.calendar]
@@ -102,11 +104,11 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
     [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
     box_height = 196.0
     box_width = 810.0
-    cx = 1066.5
-    cy = 1090.39404296875
+    cx = 984.5001220703125
+    cy = 1006.1400756835938
     output = "eDP-1"
-    placement_height = 1333.0
-    placement_width = 2133.0
+    placement_height = 1230.0
+    placement_width = 1969.0
     rotation = 0.0
     type = "login_box"
 
@@ -129,8 +131,21 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
 
 [nightlight]
 enabled = true
-temperature_day = 5500
+temperature_day = 5000
 temperature_night = 3500
+
+[notification]
+filter_order = [ "filter" ]
+
+    [notification.filter.filter]
+    allow_permanent = true
+    bypass_dnd = false
+    enabled = true
+    match = "networkmanager applet"
+    match_content = ".*"
+    play_sound = true
+    save_history = false
+    show_toast = true
 
 [osd.kinds]
 keyboard_layout = false
@@ -196,7 +211,6 @@ launch_apps_as_systemd_services = true
 [theme]
 builtin = "Ayu"
 community_palette = "Solarized"
-mode = "dark"
 wallpaper_scheme = "m3-content"
 
     [theme.templates]
