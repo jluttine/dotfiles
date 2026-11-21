@@ -7,6 +7,11 @@
 
 (package! string-inflection :pin "617df25e91351feffe6aff4d9e4724733449d608")
 
+(package! eca
+  :recipe (:host github
+           :repo "editor-code-assistant/eca-emacs"
+           :files ("*.el")))
+
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 
