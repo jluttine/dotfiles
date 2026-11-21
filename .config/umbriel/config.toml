@@ -283,9 +283,9 @@ options = "caps:escape"
 "Mod+Shift+9" = "window-move-to-workspace 9"
 
 # Scratchpad
-"Mod+Shift+Backspace" = { action = "window-move-to-scratchpad", repeat = false }
+"Mod+Shift+Backspace" = { action = "window-toggle-scratchpad", repeat = false }
 "Mod+Backspace" = { action = "scratchpad-toggle", repeat = false }
-"Mod+Ctrl+Backspace" = { action = "window-restore-from-scratchpad", repeat = false }
+#"Mod+Ctrl+Backspace" = { action = "window-restore-from-scratchpad", repeat = false }
 #"Mod+Tab" = "scratchpad-focus-next"
 
 # ==============================================================================

@@ -184,7 +184,7 @@ launch_apps_as_systemd_services = true
     enabled = true
     label = "Suspend"
     shortcut = "s"
-    variant = "primary"
+    variant = "default"
 
     [[shell.session.actions]]
     action = "logout"
@@ -230,7 +230,7 @@ enabled = false
 capsule = true
 capsule_padding = 10
 font_scale = 0.90000000000000013
-max_length = 550
+max_length = 500
 show_empty_label = true
 
 [widget.battery]
