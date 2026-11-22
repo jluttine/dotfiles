@@ -25,3 +25,7 @@ fi
 #export LC_MESSAGES="en_US.UTF-8"
 #export LC_CTYPE="en_US.UTF-8"
 #export LC_COLLATE="en_US.UTF-8"
+
+if [ -e "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ] ; then
+    . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+fi
