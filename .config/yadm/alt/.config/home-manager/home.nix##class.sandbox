@@ -57,6 +57,7 @@
     gnused
     gawk
     git
+    pijul
     yadm
     gnupg
     pinentry-curses
