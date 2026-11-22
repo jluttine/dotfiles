@@ -42,3 +42,4 @@ image/jpeg=swayimg.desktop
 x-scheme-handler/mailto=userapp-Thunderbird-PC7OY3.desktop
 x-scheme-handler/mid=userapp-Thunderbird-PC7OY3.desktop
 message/rfc822=userapp-Thunderbird-PC7OY3.desktop
+x-scheme-handler/opencode=ai.opencode.desktop.desktop
