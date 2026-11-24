@@ -1,4 +1,4 @@
-config_version = 16
+config_version = 20
 
 [audio]
 enable_notification_sounds = false

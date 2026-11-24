@@ -386,7 +386,7 @@ default_floating = true
 match.is_focused = false
 blur = true
 opacity = 0.8
-border_color_outer = "#00000000"
+border_color_outer = "#4c3f26"  # ayu primary_container
 
 [[window_rule]]
 match.is_focused = true
@@ -397,7 +397,7 @@ opacity = 1.0
  # Settings -> Appearance -> Theme -> Inspect Colors
  # Ideally, one could set, for instance, "primary"
 #border_color_outer = "#7aa2f7"  # tokyo night
-border_color_outer = "#e6b450"  # ayu
+border_color_outer = "#e6b450"  # ayu primary
 
 [[layer_rule]]
 match.namespace = "^noctalia-panel$"
