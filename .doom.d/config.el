@@ -91,6 +91,9 @@
 (after! magit
   (setq magit-list-refs-sortby "-committerdate"))
 
+(use-package! eca
+  :when (executable-find "eca"))
+
 ;; From here:
 ;; https://tecosaur.github.io/emacs-config/config.html#string-inflection
 (use-package! string-inflection
