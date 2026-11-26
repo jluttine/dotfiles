@@ -1,6 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
+  imports = (
+    lib.optional (builtins.pathExists ./local.nix) ./local.nix
+  );
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "jluttine";
@@ -111,7 +115,7 @@
   #  /etc/profiles/per-user/jluttine/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "emacs";
   };
 
   # Let Home Manager install and manage itself.
@@ -122,5 +126,68 @@
     nix-direnv.enable = true;
   };
 
-  #programs.bash.enable = true;
+  programs.bash = {
+    enable = true;
+    bashrcExtra = ''
+      export VISUAL=vim
+      export EDITOR=vim
+      export PATH="$HOME/.emacs.d/bin:$PATH"
+    '';
+    profileExtra = ''
+      umask 077
+      # set PATH so it includes user's private bin if it exists
+      if [ -d "$HOME/.local/bin" ] ; then
+          PATH="$HOME/.local/bin:$PATH"
+      fi
+      # if [ -e "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ] ; then
+      #     . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+      # fi
+    '';
+    shellAliases = {
+      "yadm-nixos" = "yadm --yadm-dir /etc/nixos/.yadm/config --yadm-data /etc/nixos/.yadm/data";
+      ls = "ls --color=auto";
+      ll = "ls -lh";
+      la = "ls -a";
+      lla = "ls -lha";
+      df = "df -h";
+
+      # Interactivity
+      rm = "rm -I";
+      cp = "cp -i";
+      mv = "mv -i";
+
+      # zipping and stuff
+      mktar = "tar -cvf";
+      mkbz2 = "tar -cvjf";
+      mkgz = "tar -cvzf";
+      untar = "tar -xvf";
+      unbz2 = "tar -xvjf";
+      ungz = "tar -xvzf";
+
+      # Directory navigation
+      home = "cd ~";
+      "cd.." = "cd ..";
+      ".." = "cd ..";
+      "..." = "cd ../..";
+      "...." = "cd ../../..";
+      "....." = "cd ../../../..";
+    };
+  };
+
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+    plugins = with pkgs.vimPlugins; [
+      base16-nvim
+      vim-nix
+    ];
+    # Load Noctalia theme file that Noctalia generates automatically
+    initLua = ''
+      local ok, matugen = pcall(require, 'matugen')
+      if ok then matugen.setup() end
+    '';
+  };
+
 }
