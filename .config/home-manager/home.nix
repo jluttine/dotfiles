@@ -68,14 +68,12 @@
     ripgrep
     curl
     croc
-    eca
     gzip
     procps
     which
     man
     less
-    opencode
-    opencode-desktop
+    openssh
     # emacs-pgtk is the Wayland-native Emacs
     emacs-pgtk
     python3

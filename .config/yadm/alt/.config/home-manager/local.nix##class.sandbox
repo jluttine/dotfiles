@@ -2,9 +2,9 @@
 
 {
   home.packages = with pkgs; [
+    eca
     opencode
     opencode-desktop
-    openssh
   ];
   programs.bash = {
     bashrcExtra = ''
