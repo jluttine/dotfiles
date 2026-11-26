@@ -38,10 +38,6 @@ enabled = true
 event_date_format = "%a %e %B"
 refresh_minutes = 5
 
-    [calendar.account.jluttine]
-    name = "GMail"
-    type = "google"
-
 [control_center.calendar]
 show_events_location = true
 show_week_numbers = true
